@@ -43,8 +43,7 @@ long getNextValue(vector<long>& sequence) {
     for (auto i = differences.size() - 1; i > 0; i--) {
         long last = differences[i - 1][differences[i - 1].size() - 1];
         long last2 = differences[i][differences[i].size() - 1];
-        long sum = last + last2;
-        differences[i - 1].push_back(sum);
+        differences[i - 1].push_back(last + last2);
     }
 
     return sequence[sequence.size() - 1] + differences[0][differences[0].size() - 1];
@@ -56,8 +55,7 @@ long getPreviousValue(vector<long>& sequence) {
     for (auto i = differences.size() - 1; i > 0; i--) {
         long first = differences[i - 1][0];
         long first2 = differences[i][0];
-        long sum = first - first2;
-        differences[i - 1].insert(differences[i - 1].begin(), 1, sum);
+        differences[i - 1].insert(differences[i - 1].begin(), 1, first - first2);
     }
 
     return sequence[0] - differences[0][0];
